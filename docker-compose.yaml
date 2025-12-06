@@ -1,0 +1,33 @@
+version: "4.43.2"
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: graphdb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Jacuby123
+      MYSQL_DATABASE: graphdb
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  backend:
+    build: ./backend-graphx
+    depends_on:
+      - mysql
+    ports:
+      - "9000:9000"
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USER: root
+      DB_PASS: Jacuby123
+      DB_NAME: graphdb
+      HTTP_PORT: 9000
+      DATA_DIR: /Project/data   # nơi có products.csv, order_products_prior.csv...
+    volumes:
+      - ./dataset:/Project/data
+
+volumes:
+  mysql_data:
