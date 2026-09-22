@@ -6,8 +6,6 @@ Dự án này gồm ba phần:
 - **Frontend Next.js 14 (App Router)**: hiển thị bảng PageRank, tìm kiếm Personalized PageRank và đồ thị trực quan, sẵn sàng deploy lên Vercel.
 - **MySQL**: lưu bảng `nodes`, `pagerank`, `ppr`.
 
-> Không dùng Docker. MySQL chạy local với tài khoản `root / Jacuby123` trên `localhost:3306`.
-
 ---
 
 ## 1. Cấu trúc thư mục
@@ -27,11 +25,11 @@ project-root/
 
 ## 2. Chuẩn bị MySQL
 
-1. Đảm bảo MySQL đã cài local và tạo user `root` với mật khẩu `Jacuby123`.
+1. Đảm bảo MySQL đã cài local và tạo user `root` với mật khẩu `******`.
 2. Tạo database và bảng:
 
 ```bash
-mysql -u root -pJacuby123 < db/init.sql
+mysql -u root -p****** < db/init.sql
 ```
 
 File `init.sql` chỉ tạo schema, backend sẽ ghi đè toàn bộ bảng `nodes`/`pagerank`/`ppr` mỗi lần chạy.
@@ -65,7 +63,7 @@ File `init.sql` chỉ tạo schema, backend sẽ ghi đè toàn bộ bảng `nod
 | `DB_PORT` | `3306` | Port MySQL |
 | `DB_NAME` | `graphdb` | Database |
 | `DB_USER` | `root` | User |
-| `DB_PASS` | `Jacuby123` | Password |
+| `DB_PASS` | `******` | Password |
 | `DATA_DIR` | thư mục cha của `backend-graphx` | Vị trí chứa 3 file CSV |
 | `HTTP_PORT` | `9000` | Cổng server http4s |
 | `PAGERANK_ITER` | `20` | Số vòng lặp mặc định cho PR/PPR |
@@ -196,7 +194,7 @@ Các API này chỉ đọc MySQL, nên bạn có thể gọi từ Vercel mà kh�
 
 - **Backend báo lỗi không tìm thấy file CSV**: set `DATA_DIR` tới thư mục chứa 3 file (`products.csv`, ...). Mặc định là thư mục cha của `backend-graphx`.
 - **Lỗi kết nối MySQL**:
-  - Kiểm tra user/password (`root / Jacuby123`).
+  - Kiểm tra user/password (`root / ******`).
   - Bảo đảm MySQL bật `local_infile=ON` nếu dữ liệu lớn.
 - **Frontend báo lỗi Prisma**:
   - Chạy `npx prisma generate`.
