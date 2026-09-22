@@ -214,4 +214,3 @@ Các API này chỉ đọc MySQL, nên bạn có thể gọi từ Vercel mà kh�
 - Bổ sung API ghi nhận thời điểm tính toán để frontend hiển thị “last updated”.
 - Đưa MySQL + backend lên cloud (AWS RDS + EMR / Databricks) để đủ công suất cho dataset lớn hơn.
 
-Chúc bạn học tốt và triển khai thành công! Nếu cần thêm automation (CI/CD, logging, monitoring), hãy mở issue hoặc mở rộng dự án theo nhu cầu.
